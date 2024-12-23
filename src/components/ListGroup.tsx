@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 // {items: [], heading: string}
-interface Props{
+interface Props {
   items: string[];
   heading: string;
+  //(item : string)=> void
+  onSelectItem: (items: string) => void;
 }
 
-function ListGroup({items , heading}: Props) {
- 
-
+function ListGroup({ items, heading, onSelectItem }: Props) {
   // hook
   const [selectedIndex, setSelectedIndex] = useState(0);
   //  arr[0] //variable (selectedIndex)
@@ -33,6 +33,7 @@ function ListGroup({items , heading}: Props) {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectItem(item);
             }}
           >
             {item}
