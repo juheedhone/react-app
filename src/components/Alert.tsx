@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode;
 }
 const Alert = ({ children }: Props) => {
-  return <div className="alert alert-primary">{children}</div>;
+  return <div className="Alert Alert-primary">{children}</div>;
 };
 
 export default Alert;
