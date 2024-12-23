@@ -1,16 +1,35 @@
 function ListGroup() {
-  const items = ["new york", "nagpur", "pune", "mumbai"];
+  let items = ["new york", "nagpur", "pune", "mumbai"];
+  items = [];
+  // solution3
 
-  items.map(item => <li>{item}</li>)
+  // if (items.length === 0)
+  //   return (
+  //     <>
+  //       <h1>List</h1>
+  //       <p>no item fount</p>
+  //     </>
+  //   );
+
+  // solution 4
+  // let getMessage = () =>  {
+  //   items.length === 0 ? <p>no item found</p> : null;
+  // }
+
   return (
     <>
       <h1>List</h1>
+
+      {/* solution 1 */}
+      {/* {items.length === 0 ? <p>no item found</p> : null} */}
+
+      {/* solution2 */}
+      {items.length === 0 && <p>no item found</p>}
+
       <ul className="list-group">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
       </ul>
     </>
   );
