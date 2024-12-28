@@ -1,3 +1,4 @@
+import { produce } from "immer";
 import { useState } from "react";
 // import Button from "./components/button/button";
 
@@ -8,7 +9,17 @@ function App() {
   ]);
 
   const handleClick = () => {
-    setBugs(bugs.map((bug) => (bug.id === 2 ? { ...bug, fixed: true } : bug)));
+    // setBugs(bugs.map((bug) => (bug.id === 2 ? { ...bug, fixed: true } : bug)));
+
+    //immer
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find((bug) => bug.id === 1);
+        if (bug) {
+          bug.fixed = true;
+        }
+      })
+    );
   };
 
   return (
@@ -16,10 +27,7 @@ function App() {
       <button onClick={handleClick}>Fix</button>
       <div>
         {bugs.map((bug) => (
-          <div key={bug.id}>
-            <p>{`name: ${bug.title}`}</p>
-            <p>{`status: ${bug.fixed}`}</p>
-          </div>
+          <p key={bug.id}>{`${bug.title} ${bug.fixed ? 'done' : 'new'} `}</p>
         ))}
       </div>
     </>
