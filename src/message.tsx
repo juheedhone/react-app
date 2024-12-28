@@ -1,12 +1,10 @@
-// PascalCasing
 
-function Message() {
-  // JSX: javascript XML
-  const name = "cloud hosting for Pros";
-  if (name) {
-    return <h1>{name}</h1>;
-  }
-  return <h1>hello world</h1>;
-}
+// always keep component pure
+
+const Message = () => {
+  let count = 0;
+  count++;
+  return <div>Message {count}</div>;
+};
 
 export default Message;
