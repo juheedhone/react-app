@@ -1,12 +1,10 @@
 import Message from "./message";
 
-function App(){
-  return(
-  <div>
-    <Message/>
-    <Message/>
-    <Message/>
-  </div>
+function App() {
+  return (
+    <div>
+      <Message />
+    </div>
   );
 }
 

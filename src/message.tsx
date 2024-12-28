@@ -1,8 +1,9 @@
 
 // always keep component pure
+let count = 0;
 
 const Message = () => {
-  let count = 0;
+  console.log('message', count)
   count++;
   return <div>Message {count}</div>;
 };
