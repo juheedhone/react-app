@@ -1,18 +1,26 @@
 import { useState } from "react";
 
 function App() {
-  const [pizza, setPizza] = useState({
-    name: "spicy pepperoni",
-    toppings: ["mushroom"],
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "product1", quantity: 1 },
+      { id: 2, title: "product2", quantity: 1 },
+    ],
   });
 
   const handleClick = () => {
-    setPizza({ ...pizza, toppings: [...pizza.toppings,  "cheese"] });
+    setCart({
+      ...cart,
+      items: cart.items.map((items) =>
+        items.id === 1 ? { ...items, quantity: 2 } : items
+      ),
+    });
   };
 
   return (
     <div>
-      {pizza.toppings.join()}
+      {cart.items[0].quantity}
       <button onClick={handleClick}>clickMe</button>
     </div>
   );
