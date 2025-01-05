@@ -1,20 +1,23 @@
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const connect = () => console.log("connecting");
-const Disconnect = () => console.log("Disconnecting");
+interface user {
+  id: number;
+  name: string;
+}
 
 const App = () => {
+  const [users, setUsers] = useState<user[]>([]);
+
   useEffect(() => {
-    connect();
-
-    return () => Disconnect();
-  });
-
-  return (
-    <div>
-      <input type="text" className="form-control" />
-    </div>
-  );
+    axios
+      .get<user[]>("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
+    // .then((res) => console.log(res.data[0].name));
+  }, []);
+  return <ul>
+    {users.map(user=> <li key={user.id}>{user.name}</li>)}
+  </ul>;
 };
 
 export default App;
