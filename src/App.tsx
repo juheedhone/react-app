@@ -17,14 +17,16 @@ const App = () => {
       .get<user[]>("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
         setUsers(res.data);
-        setLoading(false);
+        // setLoading(false);
       })
 
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
-        setLoading(false);
-      });
+        // setLoading(false);
+      })
+      .finally(() => setLoading(false));
+
     // .then((res) => console.log(res.data[0].name));
   }, []);
   return (
